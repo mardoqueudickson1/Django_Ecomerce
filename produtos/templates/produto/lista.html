@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}   
+
+<div class="container">
+    
+<div class="row">
+    <div class="col-md-12">
+        <h2><b>Produtos Recente</b></h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+
+            
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row">
+
+                            {% for produto in produtos  %}
+                            
+                            <div class="col-sm-3">
+                            <div class="thumb-wrapper">
+                                <span class="wish-icon"><i class="fa fa-heart"></i></span>
+
+                                {% if produto.imagem %}
+                                    <div class="img-box">
+                                    
+                                    <a href="{% url 'detalhe' produto.slug %}">
+                                          <img src="{{produto.imagem.url}}" class="img-responsive" alt="">
+                                    </a>
+                                </div> 
+                                {% endif %}
+                                
+
+                                <div class="thumb-content">
+                                    <h4>{{produto.nome }}</h4>
+
+                                    {% if produto.preco_promocional %}
+                                    <p class="item-price"> <b>{{produto.preco_promocional}}Kz</b> <strike>{{produto.preco_marketing}}Kz</strike> </p>
+                                    {% else %}
+                                        <p class="item-price"> 
+                                            <b>{{produto.preco_marketing}}Kz</b> 
+                                        </p>
+                                    {% endif %}
+                                  
+                                    <div class="star-rating">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star-half-alt"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        Add ao carrinho</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+                        
+
+
+
+                        
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div> 
+</div>
+
+
+
+
+<!-- PRODUTO EXCLUSIVO -->
+
+
+
+    <div class="container col-xxl-8 px-4 py-5"><strong>
+            <h2 class="pb-2 border-bottom">Produto Exclusivo</h2>
+        </strong>
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{% static 'assets/bootstrap/imgs/product08.png'%}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+                    height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Computador Asus core i7</h1>
+                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, alias nostrum
+                    optio laborum quis suscipit possimus ut recusandae amet autem adipisci sit nulla maxime porro velit
+                    hic! Animi, debitis nesciunt.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button type="button"
+                        class="btn btn-secondary btn-lg px-4 me-md-2  primario-btn primario">Comprar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><b>Produtos Recente</b></h2>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+
+                    <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+
+                                {% for produto in produtos  %}
+                            
+                            <div class="col-sm-3">
+                            <div class="thumb-wrapper">
+                                <span class="wish-icon"><i class="fa fa-heart"></i></span>
+
+                                {% if produto.imagem %}
+                                    <div class="img-box">
+                                        
+                                    <a href="{% url 'detalhe' produto.slug %}">
+                                          <img src="{{produto.imagem.url}}" class="img-responsive" alt="">
+                                    </a>
+                                </div> 
+                                {% endif %}
+                                
+
+                                <div class="thumb-content">
+                                    <h4>{{produto.nome }}</h4>
+
+                                    {% if produto.preco_promocional %}
+                                    <p class="item-price"> <b>{{produto.preco_promocional}}</b> <strike>{{produto.preco_marketing}}</strike> </p>
+                                    {% else %}
+                                        <p class="item-price"> 
+                                            <b>{{produto.preco_marketing}}</b> 
+                                        </p>
+                                    {% endif %}
+                                  
+                                    <div class="star-rating">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star-half-alt"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        Add ao carrinho</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock content %}
+

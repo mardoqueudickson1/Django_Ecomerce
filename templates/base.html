@@ -1,0 +1,95 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    {% include 'parciais/_head.html' %}
+
+    <title>Django</title>
+</head>
+
+<body>
+
+
+
+
+    {% include 'parciais/_nav.html' %}
+    
+
+
+
+
+
+
+    <div class="container my-5">
+        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 ">
+            <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                <h1 class="display-4 fw-bold lh-1">Queu Tecnologia <br>
+                    Sua loja sempre online, com as melhores</h1>
+                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus vel unde quidem
+                    iusto autem ratione fugit impedit consectetur. Libero ipsa ipsum atque accusantium recusandae ipsam
+                    delectus! Labore dolor perferendis ab.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                    <button type="button"
+                        class="btn btn-secondary btn-lg px-4 me-md-2 fw-bold primario-btn primario">Saber mais</button>
+
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1 p-0 img">
+                <img class="rounded-lg-3" src="{% static 'assets/bootstrap/imgs/product03.png'%}" alt="" width="550">
+            </div>
+        </div>
+    </div>
+
+<!--NOVIDADES-->
+    <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom">Novidades</h2>
+
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col novidades">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                    style="background-image: url({% static 'assets/bootstrap/imgs/product05.png'%});">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-white ">Novidade</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col novidades">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                    style="background-image: url({% static 'assets/bootstrap/imgs/shop02.png'%});">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-white">Novidade</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col novidades">
+                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
+                    style="background-image: url({% static 'assets/bootstrap/imgs/shop03.png'%});">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-white">Novidade</h2>
+
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--PRODUTOS-->
+  
+
+      {% block content %} {% endblock content %}
+
+
+    <!-- FOOTER -->
+
+{% include 'parciais/_footer.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %} {% for produto in produtos  %}
+                            
+<div class="col-sm-3">
+<div class="thumb-wrapper">
+    <span class="wish-icon"><i class="fa fa-heart"></i></span>
+
+    {% if produto.imagem %}
+        <div class="img-box">
+            
+            <a href="{% url 'detalhe' produto.slug %}">
+                <img src="{{produto.imagem.url}}" class="img-responsive" alt="">
+          </a>
+    </div> 
+    {% endif %}
+    
+
+    <div class="thumb-content">
+        <h4>{{produto.nome }}</h4>
+
+        {% if produto.preco_promocional %}
+        <p class="item-price"> <b>{{produto.preco_promocional}}</b> <strike>{{produto.preco_marketing}}</strike> </p>
+        {% else %}
+            <p class="item-price"> 
+                <b>{{produto.preco_marketing}}</b> 
+            </p>
+        {% endif %}
+      
+        <div class="star-rating">
+            <ul class="list-inline">
+                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                <li class="list-inline-item"><i class="fa fa-star-half-alt"></i>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="btn btn-primary">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Add ao carrinho</a>
+    </div>
+</div>
+</div>
+
+{% endfor %}   {% endblock content %}
+

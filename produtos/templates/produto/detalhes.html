@@ -1,0 +1,208 @@
+{% load static %}
+{% load mdfiletrs %}
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+   {% include 'parciais/_head.html' %}
+    <title> Detalhes | {{produto.nome}}</title>
+</head>
+
+<body>
+    
+    
+
+
+
+   {% include 'parciais/_nav.html' %}
+
+
+
+    <h1 class="">produto</h2>
+ <h2 class="pb-2 border-bottom mt-6">Produto</h2>
+  
+
+    <main class="container mt-4 mb-">
+        {% include 'parciais/_messages.html' %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg">
+                        <div class="row no-gutters">
+                            <div class="col-lg-12">
+                                <img class="img-fluid" src="{{ produto.imagem.url}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="mt-4 mt-lg-0">
+                            <h1 class="display-4 fw-bold lh-1">{{produto.nome}}</h1>
+                            <p class="lead">{{produto.descricao}}</p>
+                            <p class="lead">
+
+                                {% if produto.preco_promocional %}
+                                <span id="variation-preco-promocional" class="lead product-price">
+                                    {{ produto.preco_promocional|formata_preco }}
+                                </span>
+                                <span id="variation-preco" class="lead product-old-price text-muted">
+                                    {{ produto.preco_marketing|formata_preco }}
+                                </span>
+                                {% else %}
+                                <span id="variation-preco" class="lead product-price">
+                                    {{ produto.preco_marketing|formata_preco }}
+                                </span>
+                                {% endif %}
+                            </p>
+                            
+                            
+                            <form action="{% url 'adicionaraocarrinho' %}" id="form-add-to-cart">
+                                <div class="form-group">
+                                    <select id="select-variacoes" name="vid" class="form-control form-control-lg">
+                                        {% for variacao in produto.variacao_set.all %}
+                
+                                        {% if variacao.preco_promocional %}
+                                        <option data-preco="{{ variacao.preco|formata_preco }}"
+                                            data-preco-promocional="{{ variacao.preco_promocional|formata_preco }}"
+                                            value="{{ variacao.id }}">
+                                            {% if variacao.nome %}
+                                            {{ variacao.nome }}
+                                            {% else %}
+                                            {{ variacao }}
+                                            {% endif %}
+                                        </option>
+                                        {% else %}
+                                        <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
+                                            {% if variacao.nome %}
+                                            {{ variacao.nome }}
+                                            {% else %}
+                                            {{ variacao }}
+                                            {% endif %}
+                                        </option>
+                                        {% endif %}
+                
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                
+                                <div class="text-left">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block primario-btn primario   mt-3">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        Adicionar ao carrinho
+                                    </button>
+                                </div>
+                
+                            </form>
+
+.
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                      <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mt-5 mb-5">
+                            <h2 class="text-center">{{produto.nome}} </h2>
+                            <p>
+                              {{produto.descricao_longa|linebreaks }}
+                   
+                        </div>
+                    </div>
+                </div>
+                </div>
+              
+
+            </div>
+        </div>
+    </main>
+
+
+
+
+   
+
+    <!--PRODUTOS-->
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><b>Produtos Recente</b></h2>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+
+                    <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+
+                                {% for produto in detalhes  %}
+                            
+                            <div class="col-sm-3">
+                            <div class="thumb-wrapper">
+                                <span class="wish-icon"><i class="fa fa-heart"></i></span>
+
+                                {% if produto.imagem %}
+                                    <div class="img-box">
+                                        
+                                        <a href="{% url 'detalhe' produto.slug %}">
+                                            <img src="{{produto.imagem.url}}" class="img-responsive" alt="">
+                                      </a>
+                                </div> 
+                                {% endif %}
+                                
+
+                                <div class="thumb-content">
+                                    <h4>{{produto.nome }}</h4>
+
+                                    {% if produto.preco_promocional %}
+                                    <p class="item-price"> <b>{{produto.preco_promocional}}</b> <strike>{{produto.preco_marketing}}</strike> </p>
+                                    {% else %}
+                                        <p class="item-price"> 
+                                            <b>{{produto.preco_marketing}}</b> 
+                                        </p>
+                                    {% endif %}
+                                  
+                                    <div class="star-rating">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            <li class="list-inline-item"><i class="fa fa-star-half-alt"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        Add ao carrinho</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+                             
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- FOOTER -->
+
+
+
+  
+
+
+
+{% include 'parciais/_footer.html' %}
+</body>
+
+</html>
